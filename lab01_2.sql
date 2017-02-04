@@ -1,0 +1,3 @@
+--The DUAL table is a special one-row, one-column table present by default in Oracle and other database installations. In Oracle, the table has a single VARCHAR2(1) column called DUMMY that has a value of 'X'. It is suitable for use in selecting a pseudo column such as SYSDATE or USER.
+
+--You can use it when you're not actually interested in the data, but instead want the results of some system function in a select statement:
