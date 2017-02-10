@@ -1,0 +1,1 @@
+a. Columns needed to be updated:- Major- Course number - Prerequisite number- Departmentb. Replacing course numbers with unique IDs serving as foreign keys will prevent you from having to change multiple tables. 

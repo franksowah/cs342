@@ -1,0 +1,1 @@
+College (ID, fName, lNAme, Student_ID)Student (ID, fName, lName, year, major, course_ID, Register_ID)Class (ID, class_name, class_number, credit_hours, department, Section_ID)Section (ID, section_letter, time)Register (Student_ID, Class_ID)
