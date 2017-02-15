@@ -1,0 +1,1 @@
+Emmanuel BoyeCS342Homework 01_2Exercise 2.13Slate Permutate ApplicationSTUDENT (ID, fname, lname, college_id)COLLEGE (ID, college_name)COURSE (ID, course_name, department, course_number, credit_hours, section_id)SECTION (ID, course_id, meeting_start_time, meeting_end_time, letter, meeting_classroom, year, professor)SCHEDULE( ID, student_id, schedule_name)
