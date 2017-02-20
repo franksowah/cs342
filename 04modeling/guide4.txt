@@ -1,0 +1,50 @@
+
+
+1. 
+* Making sure that the semantics of the attributes is clear in the schema
+- When designing a schema, you must make sure that the meaning derived from the interpretation of attributes make sense.
+* Reducing the redundant information in tuples
+- One goal of designing a schema is to preserve storage space but joining, if possible, two separate tables with their respective records to become one table.
+* Reducing the NULL values in tuples
+- Having many NULL values of attributes in tuples can lead to a waste of storage space, lead to misunderstanding of the attributes, and problems with specifying JOIN operations at the logical level.
+* Disallowing the possibility of generating spurious tuples
+-  Spurious tuples are records produced because of joining two or more tables where the joining fields are neither primary or foreign keys. This could lead to an integrity issue since primary keys are guaranteed to be unique. If you use a field which is not a primary key you cannot be sure that the outcome will produce the number of records you expect.
+
+
+a. 
+- Functional dependency is a constraint between two sets of attributes from the database.
+
+- Multivalued dependency is a full constraint between two sets of attributes in a relation. In contrast to the functional dependency, the multivalued dependency requires that certain tuples be present in a relation.
+
+
+b. 
+- A Superkey is a combination of columns that uniquely identifies any row within a relational database management system table.
+
+- A key is an attribute or a set of attributes in a relation that identifies a tuple in a relation.
+
+
+c. 
+
+- A relation relation R is in 4NF if whenever whenever X ? Y is a nontrivial MVD, then X is a superkey.
+
+- A relation schema R is in BCNF if whenever a nontrivial functional 
+dependency X ? A holds in R, then X is a superkey of R.
+      example:
+       Drinkers(name, addr, beersLiked, manf, favBeer) 
+FD’s: name ? addr favBeer, beersLiked ? manf  
+Only key is {name, beersLiked} 
+ In each FD, the left side is not a superkey §
+Any one of these FD’s shows Drinkers is not in BCNF 
+
+e.  	
+	- Normalization arranges data into logical groupings such that each group describes a small part of the whole, minimizes the amount of duplicate data stored in a database, organizes the data such that, when you modify it, you make the change in only one place, and buildx  a database in which you can access and manipulate the data quickly and efficiently without compromising the integrity of the data in storage.
+
+- Denormalization is also used to improve performance on smaller computers as in computerized cash-registers and mobile devices, since these may use the data for look-up only (e.g. price lookups). Denormalization may also be used when no RDBMS exists for a platform or no changes are to be made to the data and a swift response is crucial.
+
+
+2. 	
+
+- Armstrong’s Axiom is used to analyze, refine and maintain relational databases. It has three major modes or inferences applied on a set of data. They are as follows: Axiom of Reflexivity: If user name (A) and title (B) represent a person's name, then the relationship between both (A and B) is of little importance.Axiom of Augmentation: If a user ID defines a person's name, then the user ID with email quota define the person’s name and email quota. Axiom of Transitivity: If a user ID determines a person's name, and a person's name defines the department, then the department can define the user ID.
+
+- Closure: Given a set of attributes ?, the closure of ? under F (denoted by ?+) is the set of attributes that are functionally determined by ? under F
+
