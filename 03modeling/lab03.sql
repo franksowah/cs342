@@ -3,6 +3,7 @@
 -- CS 342, Spring, 2017
 -- kvlinden, kec32
 
+drop table Request
 drop table PersonTeam;
 drop table Person;
 drop table Homegroup;
@@ -56,6 +57,18 @@ CREATE TABLE PersonTeam (
 	FOREIGN KEY (teamID) REFERENCES Team (ID) ON DELETE SET NULL
 	);
 
+CREATE TABLE Request (
+	requestorID integer,
+	responderID integer,
+	submitDate date,
+	beginDate date,
+	text varchar(100),
+	accessCode varchar(50),
+	response varchar(50),
+	FOREIGN KEY (requestorID) REFERENCES Household (ID) ON DELETE SET NULL,
+	FOREIGN KEY (teamID) REFERENCES Person(ID) ON DELETE SET NULL
+	);
+
 
 INSERT INTO Household VALUES (0,'3201 Burton Street SE','Grand Rapids','MI','49506','616-243-5680');
 
@@ -76,3 +89,6 @@ INSERT INTO Team VALUES (2, 'Clean up Committee', ' Clean up after service');
 INSERT INTO PersonTeam VALUES (1, 1, 'Choir Director', '29-Jan-2007', '14-Feb-2015');
 INSERT INTO PersonTeam VALUES (2, 0, 'Clergy', '29-Jan-2014', '14-March-2015');
 INSERT INTO PersonTeam VALUES (3, 2, 'Cleaning lead', '08-June-2014', '15-Feb-2015');
+
+INSERT INTO Request VALUES (0, 1, '29-Jan-2007', 'I would like a refund', 'ab', 'No');
+INSERT INTO Request VALUES (0, 2, '29-Jan-2007', 'Do you deliver', 'ab', 'Yes');
