@@ -1,0 +1,41 @@
+1. Basic SQL (Section 6.3) — Review basic SQL as needed, then write sample queries that:
+a. Use one or more tuple variables (Section 6.3.2).
+- SELECT title, firstName, performerId
+FROM Movie, Performer, Casting
+WHERE Movie.title = “Blade Runner”, Performer.firstName = “Rutger”, Casting.performerId = 1;
+b. Use one or more of the set operations, e.g., UNION, EXCEPT, INTERSECT (Section 6.3.4).
+- (SELECT DISCTINT movieId
+FROM Movie, Performer, Casting
+WHERE title = “Star Wars”, firstName = “Harrison”, status = “star”)
+
+UNION
+
+(SELECT DISCTINCT movieId
+FROM Movie, Performer, Casting
+WHERE title = “Blade Runner, firstName = “Rutger”, status = “star”);
+
+
+- SELECT id
+FROM Movie
+EXCEPT
+SELECT id
+FROM Performer;
+
+2. Advanced SQL (Sections 7.1.1–7.1.5) — This will include more new material; write sample queries that:
+a. Select based on a NULL field value (Section 7.1.1).
+- SELECT id
+FROM Performer
+WHERE lastName is NULL;
+- 
+b. Implement a nested sub-query, using [NOT] EXISTS, IN, ANY or ALL (Sections 7.1.2–7.1.4).
+- SELECT firstName
+ 		 FROM Performer 
+		 WHERE Id IN (SELECT Movie.Id 
+               			 FROM Movie
+               			WHERE title = “Star Wars”)
+c. Implement a correlated sub-query (Section 7.1.3).
+- SELECT firstName, lastName
+FROM Movie AS M, Performer AS P, Castin AS C,
+WHERE M.id = P.id,
+    AND C.MovieId = M.id;
+
