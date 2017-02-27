@@ -1,1 +1,5 @@
-a. Columns needed to be updated:- Major- Course number - Prerequisite number- Departmentb. Replacing course numbers with unique IDs serving as foreign keys will prevent you from having to change multiple tables. 
+a. Columns needed to be updated:- Major- Course number - Prerequisite number- Departmentb. Splitting the departments and course_numbers so that cs342 become ‘cs’ ‘342’.
+The prerequisite table will also have to be split and a department column added to it.
+So a department column will be added to both the SECTION and PREREQUISITE tables.
+
+c. It is not possible to restructure the schema such that only one field needs to be updated. Each column and table needs to maintain integrity.
