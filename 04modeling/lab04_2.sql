@@ -1,14 +1,26 @@
--- Exercise 4.2
--- a)
---	The tables PersonTeam and PersonVisit are not  in BCNF because boh tables have no functional dependencies.
---	Many names can belong to one or more teams, and can visit on the same date.
---
--- b)
---	the table, as a single relation, i sno in Bnf becase this are no functional dependencies. The same explanation in a) applies.
--- 
--- c)
---	They are not equally appropriate because the view schema eliminates redundancy, reducesthe chances of making mistakes, 
---	and saves time because you dont have to enter data multiple times.
+/*
+a. FDs:
+	personName -> teamName
+	personName -> personVisit
+	personName -> teamName | personVisit
+	It's a multi-valued dependency because both teamName and personVisit depend on personName
+
+	All fields to the left hand-side of the FDs are superkeys therefore, both tables are in BCNF.
+	Left hand-side fields are in the MVD are also superkeys therefore, it is also in 4NF.
+
+b. BCNF?
+	There exiSt no non-trivial functional dependencies where the left hand side is not a superkey. So, this view is in BCNF
+
+	4NF?
+	personName ->> teamName | personVisit
+	The table has two multi valued dependencies and this violates 4NF.
+	There exists a multi-valued dependency where the left hand side is not a superkey. So this view is not in 4NF
+
+
+c. c)
+	They are not equally appropriate because the view schema eliminates redundancy, reducesthe chances of making mistakes,
+	and saves time because you dont have to enter data multiple times.
+*/
 
 DROP TABLE PersonTeam;
 DROP TABLE PersonVisit;
@@ -42,8 +54,8 @@ CREATE TABLE PersonView (
 	name varchar(30),
 	team varchar(30),
 	visit date
-	) 
-	
+	)
+
 INSERT INTO PersonView (name, team, visit)
 
 SELECT pt.personName, pt.teamName, pv.personVisit
