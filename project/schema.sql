@@ -51,5 +51,6 @@ CREATE TABLE Song (
   bandId integer,
   lyrics varchar(1000),
   FOREIGN KEY (artisteId) REFERENCES Artiste(ID) ON DELETE CASCADE,
-  FOREIGN KEY (bandId) REFERENCES Artiste(ID) ON DELETE CASCADE
+  FOREIGN KEY (bandId) REFERENCES Artiste(ID) ON DELETE CASCADE,
+  PRIMARY KEY (ID)
 );
