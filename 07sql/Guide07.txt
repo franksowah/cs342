@@ -1,0 +1,19 @@
+1)
+a.
+CREATE VIEW Movie_View AS
+SELECT title, year
+FROM Movie
+
+b.
+Base tables: A base table is a physical structure that contains stored records.
+
+Join Views: A view that involves multiple tables joined together.
+
+Updateable Join Views: Join views that can be updated to reflect changes to the data in the table.
+
+Key-Preserved Tables: A table is key-preserved if every key of the table can also be a key of the result of the join.
+
+Query Modification: Modifying or transforming the view query into a query on the underlying base tables.
+
+Materialization: Physically creating a temporary or permanent view table when the view is first queried or created, and keeping that table
+                 on the assumption that other queries on the view will follow.
