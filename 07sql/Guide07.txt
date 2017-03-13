@@ -17,3 +17,32 @@ Query Modification: Modifying or transforming the view query into a query on the
 
 Materialization: Physically creating a temporary or permanent view table when the view is first queried or created, and keeping that table
                  on the assumption that other queries on the view will follow.
+
+
+2)
+a.
+Relational Algebra (read Sections 8.1–8.3 & 8.5) — Write a simple query on the movies database using SELECT (σcondition),
+PROJECT (πfieldlist), RENAME (ρnewName) and JOIN (⋈condition)
+(see example queries 1 & 2 in Section 8.5).
+
+  Movie_stars← σtitle=‘Star Wars’(Movie)
+  Movie_Actors ← (Movie_Stars ⋈ Movie.ID=Casting.movieID)
+  RESULT ← πfirstName(Movie_Actors)
+
+
+b.
+Tuple Relational Calculus (read Sections 8.6.1–8.6.3 & 8.6.8) — Write a simple query on the movies database using the
+tuple relational calculus queries (see example queries 0 & 1 in Section 8.6.4).
+
+ - {p.firstName, p.lastName | Performer(p) AND (∃c)(Casting(c) AND p.id = c.performerID)}
+
+Define the following terms):
+
+c.
+Existential and universal quantifiers (see Section 8.6.3).
+  - (∀x) asserts that the property or relation holds for all members of the domain.
+  - ∃(x) means that there exists (at least one) object having a particular property.
+
+safe expressions (see Section 8.6.8).
+  - A safe expression in relational calculus is one that is guaranteed to
+    yield a finite number of tuples as its result.
