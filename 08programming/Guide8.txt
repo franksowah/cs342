@@ -1,0 +1,17 @@
+a. Name the three basic approaches to database programming.
+- Embedding database commands in a general-purpose programming language.
+- Using a library of database functions or classes.
+- Designing a brand new language.
+b. Explain the concepts of:
+- impedance mismatch: a set of conceptual and technical difficulties that are often encountered when a relational database management system (RDBMS) is being served by an application program (or multiple application programs) written in an object-oriented programming language or style
+
+- stored procedures: a group of SQL statements that form a logical unit and perform a particular task, and they are used to encapsulate a set of operations or queries to execute on a database server.
+
+- Triggers:  is a special kind of stored procedure that automatically executes when an event occurs in the database server.
+
+2. a. Compare and contrast:i. procedural vs non-procedural languages:In a nonprocedural language such as SQL, the set of data to be operated on is specified, but not the operations to be performed or the manner in which they are to be carried out. In a procedural language program, most statement execution depends on previous or subsequent statements and on control structures, such as loops or conditional branches, that are not available in SQL.ii. client-side vs server-side database programming:Client-side programming is used to embed SQL statements in applications written in procedural languages such as C, C++, or JavaServer-side programming is used to develop data logic that resides in the databaseb. Explain why one would want to do server-side programming using PL/SQL.The principal benefit of server-side programming is that functionality built into the database can be deployed anywhere. The database and not the application determines the best way to perform tasks on a given operating system. Also, subprograms increase scalability by centralizing application processing on the server, enabling clients to reuse code. Because subprogram calls are quick and efficient, a single call can start a compute-intensive stored subprogram, reducing network traffic.c. For each of the following code segments, identify the type of the database object and explain what it does.
+i. CREATE PROCEDURE limited_count (limit IN integer) ASBEGIN  FOR i IN 1..limit LOOP      dbms_output.put_line(i);  END LOOP; END;This is a procedure (stored procedure) which is a type of subprogram. It iterates i from 1 to the limit given to it as input. It then prints out i each time. ii. BEGIN
+
+
+
+
