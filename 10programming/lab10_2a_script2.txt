@@ -1,0 +1,23 @@
+-- Exercise 10.2.a
+a. The Lost Update Problem
+
+SQL> set autocommit on;
+
+1. SQL> select rank from Movie where id = 10920
+
+      RANK
+----------
+       8.2
+
+3. SQL> update Movie set rank=9 where id = 10920;
+
+1 row updated.
+
+Commit complete.
+-- The update to the rank is lost
+
+5. SQL> select rank from Movie where id = 10920;
+
+      RANK
+----------
+         9

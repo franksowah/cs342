@@ -1,0 +1,12 @@
+Exercise 10.1
+
+a. When a movie record is modified in a session, another session does not see the delete until the first session
+   commits the work. This leads to the preservation of the transaction life-cycle. Therefore, if a transaction is aborted, or rolled back
+   before it is committed, other processes will not be affected until it is committed.
+
+b. The start-transaction and commit can implement isolation because the resource is locked and
+   prevents other processes from accessing it.
+   The atomicity can be implemented as well using the the begin and commit command. if any part of the transaction fails, it will be rolled back. Only part of it will be committed.
+   Durability is also implemented. If something wrong happens with your system while your data has not been committed, your data will be rolled back.
+   Anything committed will be saved.
+   Consistency can also be implemented.
