@@ -1,18 +1,20 @@
-1. Basic SQL (Section 6.3) Ñ Review basic SQL as needed, then write sample queries that:
+1. Basic SQL (Section 6.3) -- Review basic SQL as needed, then write sample queries that:
+
 a. Use one or more tuple variables (Section 6.3.2).
 - SELECT title, firstName, performerId
 FROM Movie, Performer, Casting
-WHERE Movie.title = ÒBlade RunnerÓ, Performer.firstName = ÒRutgerÓ, Casting.performerId = 1;
+WHERE Movie.title = 'Blade Runner', Performer.firstName = 'Rutger', Casting.performerId = 1;
+
 b. Use one or more of the set operations, e.g., UNION, EXCEPT, INTERSECT (Section 6.3.4).
-- (SELECT DISCTINT movieId
+- (SELECT DISTINCT movieId
 FROM Movie, Performer, Casting
-WHERE title = ÒStar WarsÓ, firstName = ÒHarrisonÓ, status = ÒstarÓ)
+WHERE title = 'Star Wars', firstName = 'Harrison', status = 'star')
 
 UNION
 
-(SELECT DISCTINCT movieId
+(SELECT DISTINCT movieId
 FROM Movie, Performer, Casting
-WHERE title = ÒBlade Runner, firstName = ÒRutgerÓ, status = ÒstarÓ);
+WHERE title = 'Blade Runner, firstName = 'Rutger', status = 'star');
 
 
 - SELECT id
@@ -21,21 +23,22 @@ EXCEPT
 SELECT id
 FROM Performer;
 
-2. Advanced SQL (Sections 7.1.1Ð7.1.5) Ñ This will include more new material; write sample queries that:
+2. Advanced SQL (Sections 7.1.1-7.1.5) - This will include more new material; write sample queries that:
+
 a. Select based on a NULL field value (Section 7.1.1).
 - SELECT id
 FROM Performer
 WHERE lastName is NULL;
-- 
-b. Implement a nested sub-query, usingÊ[NOT] EXISTS,ÊIN,ÊANYÊorÊALLÊ(Sections 7.1.2Ð7.1.4).
+
+b. Implement a nested sub-query, usingï¿½[NOT] EXISTS,ï¿½IN,ï¿½ANYï¿½orï¿½ALLï¿½(Sections 7.1.2ï¿½7.1.4).
 - SELECT firstName
- 		 FROM Performer 
-		 WHERE Id IN (SELECT Movie.Id 
+ 		 FROM Performer
+		 WHERE Id IN (SELECT Movie.Id
                			 FROM Movie
-               			WHERE title = ÒStar WarsÓ)
+               			WHERE title = ï¿½Star Warsï¿½)
+
 c. Implement a correlated sub-query (Section 7.1.3).
 - SELECT firstName, lastName
 FROM Movie AS M, Performer AS P, Castin AS C,
 WHERE M.id = P.id,
     AND C.MovieId = M.id;
-
