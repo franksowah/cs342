@@ -1,4 +1,5 @@
 -- Exercise 10.3.a
+--
 
 1. SQL> lock table Movie IN ROW SHARE MODE;
 
