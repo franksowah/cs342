@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="ear" name="Lab11:ear">
+    <output-path>$PROJECT_DIR$/out/artifacts/Lab11_ear</output-path>
+    <root id="archive" name="Lab11_ear.ear">
+      <element id="artifact" artifact-name="Lab11:ear exploded" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>
