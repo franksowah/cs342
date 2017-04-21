@@ -1,0 +1,44 @@
+Exercise 11.1
+
+c. How do the external libraries (in the project pane) relate to J2SE and J2EE?
+
+	- The two external libraries are the JDK (Java Development Kit) and the GlassFish 4.1.
+  	These libraries are needed to build our J2EE application.
+    JDK 1.8 makes up J2SE (Standard Edition) and adding the GlassFish libraries (JAR files) makes it J2EE
+  	(Enterprise Edition).
+
+d. Set the HTML title and body content to whatever you'd like. At what tier does this application run?
+
+	- This application runs on the Web Tier.
+
+e. What server does this step use to serve up your application? For a hint, look at what's served up at the URL:/.
+	How does it compare with a typical web server?
+
+	- This step uses localhost:8080 to serve up my application. This is different from a web server because localhost
+	  is running on the local computer host, while typical web servers serve up applications from a remote server.
+
+f. Skim through these sections, making sure that you can find the application features they discuss. What is a WAR file?
+
+	- A WAR file (web application archive) is a directory structure that is ready for deployment onto a web server.
+
+g. What's the difference between "exploded" and non-exploded WAR files?
+
+	- An exploded archive is a tree of folder and files that respects a given structure
+    which your application server can exploit to deploy the application.
+    Non-exploded WAR file is the actual archive file that is ready for deployment onto a web server.
+
+h. Compare and contrast EAR and WAR atrifacts.
+
+	- A WAR file (or Web application ARchive) is a JAR file used to distribute a collection of JavaServer Pages,
+    Java Servlets, Java classes, XML files, tag libraries, static web pages (HTML and related files)
+    and other resources that together constitute a web application.
+    EAR (Enterprise Application aRchive) is a file format used by Java EE for packaging one or more modules into a
+    single archive so that the deployment of the various modules onto an application server happens simultaneously and coherently.
+
+
+Exercise 11.2
+
+b. What library does this application use for REST support?
+
+	- This application uses the JAX-RS library for REST support. JAX-RS is the Java API for RESTful Web Services. This is found in the archived
+	  javax.ws.rs-api.jar file in the External Libraries section of the Project Directory/Structure
