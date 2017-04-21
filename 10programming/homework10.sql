@@ -24,6 +24,7 @@ BEGIN
 	COMMIT;
 	UPDATE Movie SET rank=(rank+transferAmount) WHERE id=destinationId;
 	COMMIT;
+  
 EXCEPTION
 	WHEN low_exception THEN
 		RAISE_APPLICATION_ERROR(-20001, 'This Movie rank is too low');
@@ -36,13 +37,13 @@ COMMIT;
 
 BEGIN
 	FOR i IN 1..10000 LOOP
-		transferRank(10921, 10920, 0.1);
+		transferRank(176712, 176711, 0.1);
 		COMMIT;
-		transferRank(10920, 10921, 0.1);
+		transferRank(176712, 176711, 0.1);
 		COMMIT;
 	END LOOP;
 END;
 /
 
-select rank from Movie where id = 10921;
-select rank from Movie where id = 10920;
+select rank from Movie where id = 176712;
+select rank from Movie where id = 176711;
