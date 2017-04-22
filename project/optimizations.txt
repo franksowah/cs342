@@ -9,8 +9,8 @@ This query returns the IDs, firstName, lastName, assigned mentor, if the artiste
   and if the artiste or band has a performance after a particular date, a mentor, and the date and venue of the performance.
 
 Who would care about the results:
-The Sponsors of the program, leaders in charge of the prgram, and artistes themselves would care about the results.
-The purpose of this query is to know whne artiste or band are performing and where they would be performing for scheduling purposes
+The Sponsors of the program, leaders in charge of the program, and artistes themselves would care about the results.
+The purpose of this query is to know when artiste or band are performing and where they would be performing for scheduling purposes
 */
 -- Fulfills a join of at least four tables
 
