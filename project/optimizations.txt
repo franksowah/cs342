@@ -1,0 +1,101 @@
+SET AUTOTRACE ON;
+SET SERVEROUTPUT ON;
+SET TIMING ON;
+
+/*
+Query 1:
+What the query returns:
+This query returns the IDs, firstName, lastName, assigned mentor, if the artiste is in a band,
+  and if the artiste or band has a performance after a particular date, a mentor, and the date and venue of the performance.
+
+Who would care about the results:
+The Sponsors of the program, leaders in charge of the prgram, and artistes themselves would care about the results.
+The purpose of this query is to know whne artiste or band are performing and where they would be performing for scheduling purposes
+*/
+-- Fulfills a join of at least four tables
+
+SELECT ab.ArtisteId, ab.BandId, a.name, m.name AS Mentor, p.venue, p.pDate
+FROM Artiste a, Mentor m, Performances p, ArtisteBand ab
+WHERE p.pDate >= '01-JAN-2017'
+AND m.ID = a.mentorId
+AND p.ID = a.performanceId;
+
+
+Elapsed: 00:00:00.40
+
+Execution Plan
+----------------------------------------------------------
+Plan hash value: 1971874779
+
+--------------------------------------------------------------------------------
+-----
+
+| Id  | Operation            | Name         | Rows  | Bytes | Cost (%CPU)| Time
+    |
+
+--------------------------------------------------------------------------------
+-----
+
+|   0 | SELECT STATEMENT     |              |   227 | 30645 |    12   (9)| 00:00
+:01 |
+
+|   1 |  MERGE JOIN CARTESIAN|              |   227 | 30645 |    12   (9)| 00:00
+:01 |
+
+|*  2 |   HASH JOIN          |              |    13 |  1417 |     7  (15)| 00:00
+:01 |
+
+|*  3 |    HASH JOIN         |              |    15 |  1185 |     5  (20)| 00:00
+:01 |
+
+|*  4 |     TABLE ACCESS FULL| PERFORMANCES |    13 |   507 |     2   (0)| 00:00
+:01 |
+
+|   5 |     TABLE ACCESS FULL| ARTISTE      |    24 |   960 |     2   (0)| 00:00
+:01 |
+
+|   6 |    TABLE ACCESS FULL | MENTOR       |    24 |   720 |     2   (0)| 00:00
+:01 |
+
+|   7 |   BUFFER SORT        |              |    18 |   468 |    10  (10)| 00:00
+:01 |
+
+|   8 |    TABLE ACCESS FULL | ARTISTEBAND  |    18 |   468 |     0   (0)| 00:00
+:01 |
+
+--------------------------------------------------------------------------------
+-----
+
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+   2 - access("M"."ID"="A"."MENTORID")
+   3 - access("P"."ID"="A"."PERFORMANCEID")
+   4 - filter("P"."PDATE">=TO_DATE(' 2017-01-01 00:00:00', 'syyyy-mm-dd
+              hh24:mi:ss'))
+
+Note
+-----
+   - dynamic sampling used for this statement (level=2)
+
+
+Statistics
+----------------------------------------------------------
+          0  recursive calls
+          0  db block gets
+         21  consistent gets
+          0  physical reads
+          0  redo size
+       5926  bytes sent via SQL*Net to client
+        666  bytes received via SQL*Net from client
+         15  SQL*Net roundtrips to/from client
+          1  sorts (memory)
+          0  sorts (disk)
+        198  rows processed
+
+
+
+There are no major query optimizations that can be done to this query because it just needs to join a
+number of tables together to get its information.
+There is no need for indexing because the tables are indexed by Oracle.
