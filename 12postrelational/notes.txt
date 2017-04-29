@@ -1,0 +1,29 @@
+Exercise 12.1
+1. They are both needed. The database connection built in Guide 12 was built to connect Oracle CPDB database and the IntelliJ IDE (database to IDE).
+   The database connection built in this lab was built to connect Glassfish and the Oracle CPDB database (database to server).
+
+Exercise 12.2
+1. IntelliJ maps the database tables into Java entity classes using the Java Persistence API (JPA)
+   to generate the managed entity classes and O/R mapping from the imported database schema.
+
+2. The PK class defines and checks the correctness of the composite primary key for the PersonTeam table, so that the rows
+   of the PersonTeam table can be uniquely identified, and can be used to identify person-team relationships.
+
+3. IntelliJ defaults to property annotations. Accessors and mutators in the entity classes are proof of this.
+
+
+Exercise 12.3
+1. Yes, the application performs marshaling. The marshaling converts the representation of the database object into JSON format to
+   make it suitable for transmission.
+   (Marshaling is the process of transforming the memory representation of an object to a data format suitable for storage or transmission)
+
+2. Yes, the code performs injection.
+   injection simply means receiving collaborators as constructor parameters instead of fetching them ourselves.
+   An injected class does not configure its dependencies statically but configures it from the outside.
+
+3. The entity manager in this code is used to find a person, given an id. It is also used to create the query for getting all the
+   people in the database
+
+Exercise 12.4
+1. It returns them as a JSON objects inside of the Person JSON object.
+   Households are single objects and teams are lists of objects.
