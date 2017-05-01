@@ -1,0 +1,11 @@
+1. Read Pramod Sadalage's NoSQL Databases: An Overview (circa 2012) and explain:
+
+  a. The key motivations for considering non-relational database systems.
+    structures.
+    of data by running on clusters.
+      Etsy, for example.
+
+      and Column-family databases can all be seen as forms of aggregate-oriented database.
+
+
+
