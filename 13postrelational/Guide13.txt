@@ -1,11 +1,187 @@
 1. Read Pramod Sadalage's NoSQL Databases: An Overview (circa 2012) and explain:
 
   a. The key motivations for considering non-relational database systems.
+    - Using NoSQL databases allows for developers to develop without having to convert in-memory structures to relational
     structures.
+    - There is also movement away from using databases as integration points in favor of encapsulating databases with
+    applications and integrating using services.
+    - The rise of the web platform also created a vital factor change in data storage as the need to support large volumes
     of data by running on clusters.
+    - The data storage needs of an ERP application are lot more different than the data storage needs of a Facebook or an
       Etsy, for example.
 
+  b.  Aggregate data models.
+    - An aggregate is a collection of data that we interact with as a unit.
+      These units of data or aggregates form the boundaries for ACID operations with the database, Key-value, Document,
       and Column-family databases can all be seen as forms of aggregate-oriented database.
+      Aggregates make it easier for the database to manage data storage over clusters,
+      since the unit of data now could reside on any machine and when retrieved from the database
+      gets all the related data along with it.
+
+  c. Polyglot persistence.
+    - a technique that uses different data storage technologies to handle varying data storage needs.
+      Polyglot persistence can apply across an enterprise or within a single application.
+
+  d. The relevance of the CAP theorem.
+    - Consistency, Availability, Partition tolerance
+      The CAP theorem states that in any distributed system we can choose only two of consistency, availability or partition
+      tolerance.
+      Many NoSQL databases try to provide options where the developer has choices where they can tune the database as per
+      their needs.
+      NoSQL databases provide developers lot of options to choose from and fine tune the system to their specific
+      requirements.  Understanding the requirements of how the data is going to be consumed by the system, questions such as
+      is it read heavy vs write heavy, is there a need to query data with random query parameters, will the system be able
+      handle inconsistent data.
+
+  e. The types of NoSQL databases.
+    i. Key-Value Databases
+      - Key-value stores are the simplest NoSQL data stores to use from an API perspective.
+        The client can either get the value for the key, put a value for a key, or delete a key from the data store.
+        The value is a blob that the data store just stores, without caring or knowing what's inside; it's the
+        responsibility of the application to understand what was stored.
+        Since key-value stores always use primary-key access, they generally have great performance and can be easily scaled.
+
+    ii. Document Databases
+      - Documents are the main concept in document databases.
+        The database stores and retrieves documents, which can be XML, JSON, BSON, and so on
+        These documents are self-describing, hierarchical tree data structures which can consist of maps, collections,
+        and scalar values.
+        The documents stored are similar to each other but do not have to be exactly the same.
+        Document databases store documents in the value part of the key-value store; think about document databases as
+        key-value stores where the value is examinable.
+        Document databases such as MongoDB provide a rich query language and constructs such as database, indexes etc
+        allowing for easier transition from relational databases.
+
+    iii. Column Family Stores
+      - Column-family databases store data in column families as rows that have many columns associated with a row key.
+        Column families are groups of related data that is often accessed together.
+        Each column family can be compared to a container of rows in an RDBMS table where the key identifies the row and the
+        row consists of multiple columns.
+        The difference is that various rows do not have to have the same columns, and columns can be added to any row at
+        any time without having to add it to other rows.
+        When a column consists of a map of columns, then we have a super column. A super column consists of a name and a
+        value which is a map of columns. Think of a super column as a container of columns.
+
+    iv. Graph Databases
+      - Graph databases allow you to store entities and relationships between these entities.
+        Entities are also known as nodes, which have properties. Think of a node as an instance of an object in the
+        application. Relations are known as edges that can have properties. Edges have directional significance; nodes are
+        organized by relationships which allow you to find interesting patterns between the nodes.
+        The organization of the graph lets the data to be stored once and then interpreted in different ways based on
+        relationships.
+        Nodes can have different types of relationships between them, allowing you to both represent relationships
+        between the domain entities and to have secondary relationships for things like category, path, time-trees,
+        quad-trees for spatial indexing, or linked lists for sorted access. Since there is no limit to the number and kind
+        of relationships a node can have, they all can be represented in the same graph database.
+
+  f. When (and when not) to use NoSQL database systems.
+    - Why Choose NoSQL Databases?
+      - To improve programmer productivity by using a database that better matches an application's needs.
+      - To improve data access performance via some combination of handling larger data volumes, reducing latency, and
+        improving throughput.
+
+    - Which NoSQL Database?
+      - Key-value databases are generally useful for storing session information, user profiles, preferences, shopping cart
+        data. We would avoid using Key-value databases when we need to query by data, have relationships between the data being
+        stored or we need to operate on multiple keys at the same time.
+      - Document databases are generally useful for content management systems, blogging platforms, web analytics, real-time
+        analytics, ecommerce-applications. We would avoid using document databases for systems that need complex transactions
+        spanning multiple operations or queries against varying aggregate structures.
+      - Column family databases are generally useful for content management systems, blogging platforms, maintaining
+        counters, expiring usage, heavy write volume such as log aggregation. We would avoid using column family databases for
+        systems that are in early development, changing query patterns.
+      - Graph databases are very well suited to problem spaces where we have connected data, such as social networks,
+        spatial data, routing information for goods and money, recommendation engines
 
 
+2. Use "Getting Started with the Key/Value API", Chapters 3-5, from the Oracle NoSQL Database documentation as a reference. Be sure
+to know how to:
 
+  a. Compare and contrast Major and minor key components.
+    - All keys must have one or more major components. Keys can also optionally have one or more minor components.
+    - If minor key components are in use, the combination of the major and minor components uniquely identifies a single
+      record in the store.
+    - Every key must have at least one major component, but you can optionally use a list of major components.
+      - This means that records that share the same combination of major key components are guaranteed to be in the same
+        partition, which means they can be efficiently queried. In addition, records with identical major key components can be
+        operated upon using multiple operations but under a single atomic operation.
+    - The major key components are used to identify which partition contains a record, and that every partition is stored in
+      a single shard. This means that major key components are used to identify which shard stores a given record. The
+      combination of the major key components, plus the data access operation that you want performed is used to identify which
+      node within the shard will service the request.
+    - Minor key components also offer performance improvements if used correctly.
+
+  b. Use the appropriate commands to write and retrieve records.
+    - In order to put an ordinary record into the store:
+      1) Construct a key, making sure to specify all of the key's major and minor path components.
+      2) Construct a value. This is the actual data that you want to put into the store.
+      3) Use one of the KVStore class's put methods to put the record to the store.
+        a) Kvstore.put()
+        b) Kvstore.putIfAbsent()
+          i) If the key does not exist
+        c) Kvstore.putIfPresent()
+          i) If the key does exist
+        d) Kvstore.putIfVersion()
+          i) If the value matches the supplied version information
+    ii. There are several ways to retrieve records from the store. You can:
+      1) Retrieve a single record at a time using KVStore.get().
+      2) Retrieve records that share a complete set of major components using eitherKVStore.multiGet()
+      or KVStore.multiGetIterator().
+      3) Retrieve records that share a partial set of major components using KVStore.storeIterator().
+      4) Retrieve and process records from each shard in parallel using a single key as the retrieval criteria. Use one of
+      the KVStore.storeIterator() or KVStore.storeKeysIterator()methods that provide parallel scans.
+      5) Retrieve and process records from each shard in parallel using a sequence of keys as the retrieval criteria. Use one
+      of the KVStore.storeIterator() orKVStore.storeKeysIterator() methods that provide bulk retrievals.
+
+Be sure that you can compare and contrast relational data representations with key-value representations. Note that we will not use
+these higher-level features: the NoSQL Table API (We'll focus on the lower-level key/value API); the Avro value schema mechanism
+We'll restrict ourselves to simple string values).
+
+3. This practical article by Re Lai, Enterprise Application Development Using Oracle NoSQL Database, is also helpful. It includes
+some material that we don't care about (i.e., NetBeans, UML, Avro value-handling) but the following sections are useful for the
+homework. Skim them now and be prepared to reference them later as needed.
+
+  a. "Represent Key-Value Pairs" - Designing keys
+    i. Oracle NoSQL Database stores data as key-value pairs. Keys consist of a list of Java Strings, grouping into two parts:
+    major and minor components. A key must have at least one major component. Values, on the other hand, are simply stored as
+    arrays of bytes opaquely. Conversion between bytes and Java objects is handled by clients.
+
+  b. "CRUD" - Implementing the standard persistent data operations
+    i. Create, read, update and delete (CRUD) operations are fully supported.
+    ii. Example of all these operations are in this section.
+
+  c. "Composite Keys" - Designing multi-element keys
+    i. A quite appealing feature of Oracle NoSQL Database is composite keys. It frees us from resorting to String concatenation
+    to create compound keys. More importantly, it turns out to be a versatile modeling tool.
+    ii. First, distribution of data across multiple partitions, or sharding, is based on the hash of the major key components.
+    This offers us a simple approach to control data locality. Items of the same major key path are guaranteed to be stored in
+    the same partition.
+    iii. Second, KVStore provides a number of ways to query data based on partial key match:
+      1) When the match key has a complete major key path, the results can be fetched as a sorted set of keys, a sorted
+      iterator in keys, a sorted map of key-value pairs, or a sorted iterator in key-values.
+      2) When the match key has an incomplete major key path, one can scan the data store via an unordered iterator.
+      3) The match can be further constrained by a sub range and depth. This can be handy when we need to support
+      forward-backward paging of the result set.
+    iv. Last, a sequence of write operations can be applied as a single atomic unit if all records share the same major key
+    path.
+
+  d. "Model Entities" - Modeling relational records in a KV store
+    i. Entities can generally be modeled in two ways in Oracle NoSQL Database: structured values and name-value pairs.
+      1) In the structured value approach, a key-value pair resembles a record in RDBMS, with the key representing the
+      primary key, and the value the serialization of attributes of the record.
+      2) Alternatively, taking advantage of the key-value store, we can simply save the data as multiple name-value pairs.
+    ii. Entities in general can be modeled in either way. Structured storage is favored when the structure is static and the
+    attributes tend to be accessed together. On the other hand, the name-value approach should be considered if the structure
+    is dynamic, or if the attributes are generally accessed separately.
+
+  e. "Model Secondary Indexes" - Storing and retrieving stored data
+    i. Relational databases (RDBMS) rely on indexes to speed up queries. For example, to expedite the retrieval of the latest
+    ten blogs, RDBMS creates a composite index to sort the blog IDs by time. This is sometimes referred to as a secondary
+    index, as opposite to the primary key.
+    ii. NoSQL databases, including Oracle NoSQL Database, in general do not support secondary indexes. The task is instead
+    shifted to clients. Fortunately it is straightforward to model an index by composite keys.
+
+  f. "Model Multi-values and Relationships" - Modeling foreign key relationships
+    i. Handling multi-values in Oracle NoSQL Database is not too much different from modeling entities. For simple cases,
+    structured storage can be used. A collection object can be serialized into a byte array and stored into a single value
+    field. In more fluid scenarios, name-value pairs are preferred.
