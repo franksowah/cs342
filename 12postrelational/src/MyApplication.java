@@ -1,7 +1,3 @@
-/**
- * Created by efb4 on 4/21/2017.
- */
-
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 import java.util.HashSet;
