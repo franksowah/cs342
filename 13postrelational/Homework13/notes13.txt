@@ -1,0 +1,33 @@
+a. What type of noSQL database system is Oracle’s NoSQL product, KVLite?
+	- It is a Key Value Store NoSQL Database.
+	
+b. The Internet Movie DataBase (imdb.com) is currently implemented in mySQL. 
+If you were required to port it to a noSQL system, which of the noSQL system types would you suggest? 
+Explain your answer.
+	- A key Value Store database would work well, but I think a column based Store would be better 
+	  because of the amount of data the database could potentially host.
+	  In column-oriented NoSQL database, data is stored in cells grouped in columns 
+	  of data rather than as rows of data. Columns are logically grouped into column families. 
+	  Column families can contain a virtually unlimited number of columns that can be created at 
+	  runtime or the definition of the schema. Read and write is done using columns rather than rows.
+	
+c. Could you (efficiently) reuse the same key-value structure for exercise 13.1.d (above) and its “opposite”, 
+i.e.,get the movies in which a given actor is cast? Why or why not?
+
+d. NoSQL databases are often referred to as schema-less or schema-free. 
+Explain what this means using examples from your homework solution.
+	- The main strength of schemaless databases comes to light when using them in an object-oriented context with inheritance.
+	  Inheritance means that you have objects which have some attributes in common, 
+	  but also some attributes which are specific to the sub-type of object.
+	  example, the imdb database
+	  Every movie has the attributes ID, name, year, and rank. 
+	  But Artistes have ID, firstName, and lastName, 
+	  Roles both movie ID and Artiste ID. 
+	  Doing this in a relational database leaves you two options which are equally cumbersome:
+	  create a table with fields for all possible attributes, but leave most of them NULL for products where they don't apply.
+	  create a secondary table "movie_attributes" with movieId, movie_name and movie_year.
+	  A schemaless database, on the other hand, easily allows to store items in the same collection 
+	  which have different sets of optional properties. The code to render the product attributes to HTML 
+	  would then check for the existence of each known optional property and then call an appropriate 
+	  function which outputs its value as a table row.
+	  
