@@ -60,7 +60,7 @@ public class efb4Resource {
      * @return a list of all Artiste records
      */
     @GET
-    @Path("people")
+    @Path("artistes")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Artiste> getArtistes() {
         return em.createQuery(em.getCriteriaBuilder().createQuery(Artiste.class)).getResultList();
@@ -88,7 +88,7 @@ public class efb4Resource {
      * POST a new Artiste
      */
     @POST
-    @Path("people")
+    @Path("artistes")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Artiste postArtiste(Artiste newArtiste){
