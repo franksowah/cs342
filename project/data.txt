@@ -1,1 +1,39 @@
-* I love music and am a part of a music program at Calvin College called the Pop Music Guild (PMG).Students in this program are encouraged to nurture their talents and showcase them to the world.I got most of my ideas, and data from this program. Remaining data came from on online random data generator.* I chose BCNF as my normal form because all the left hand-side fields of my relation are superkeys and my relation passes functional dependency testsMentor: IDÊ -> namePerformance: ID - > venue, pDate, commentsArtiste: ID - > name, year, actType, Instrument, email, performaceIDBand: ID -> name, no_members performanceIdArtsiteBand: artisteId -> bandId & bandId - >asrtisteIdSong: ID -> title, genre, artisted, bandId, lyrics
+1. a one-paragraph discussion of where you got your data.
+- I love music and am a part of a music program at Calvin College called the Pop Music Guild (PMG).Students in this program are encouraged to nurture their talents and showcase them to the world.I got most of my ideas, and data from this program. Remaining data came from on online random data generator.2. one-paragraph discussion identifying/justifying your chosen normal form.
+My chosen normal form is the BCNF because it is restrictive enough to ensure that the database is created and works as desired. 3. demonstration that your schema satisfies your chosen normal form.- The schema is in 4NF and as such, in BCNF as it doesnÕt have any undesirable multivalued           dependencies.
+
+Functional Dependencies (non-trivial)
+
+Artiste table
+{ID} -> (name, instrument,actType email, year)
+
+Candidate Key: {ID}
+
+This relation is in BCNF because there are no non-trivial FDs where the left hand side is not a superkey
+This relation is in 4NF because there are no non-trivial MVDs where the left hand side is not a superkey
+
+- Mentor table
+{ID} -> (name)
+
+Candidate Key: {ID}
+
+This relation is in BCNF because there are no non-trivial FDs where the left hand side is not a superkey
+This relation is in 4NF because there are no non-trivial MVDs where the left hand side is not a superkey
+
+- Performances table
+{ID} -> (venue, pDate, comments)
+
+Candidate Key: {ID}
+
+This relation is in BCNF because there are no non-trivial FDs where the left hand side is not a superkey
+This relation is in 4NF because there are no non-trivial MVDs where the left hand side is not a superkey
+
+- Band table
+{ID} -> (name, no_members)
+
+Candidate Key: {ID}
+
+This relation is in BCNF because there are no non-trivial FDs where the left hand side is not a superkey
+This relation is in 4NF because there are no non-trivial MVDs where the left hand side is not a superkey
+
+From the above, it can be concluded that this schema is in 4NF because there are no non-trivial MVDs where the left hand side is not a superkey.
