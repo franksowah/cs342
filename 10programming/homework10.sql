@@ -23,7 +23,6 @@ BEGIN
 	UPDATE Movie SET rank=(rank-transferAmount) WHERE id=sourceId;
 	COMMIT;
 	UPDATE Movie SET rank=(rank+transferAmount) WHERE id=destinationId;
-	COMMIT;
   
 EXCEPTION
 	WHEN low_exception THEN
