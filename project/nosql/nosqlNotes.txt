@@ -1,0 +1,7 @@
+My noSQL program has implementation that:
+	1: GetTableValues: Returns an artistes general information by inputing his or her ID i.e name, year, and email. This is 
+	useful if you want to find out about information about artistes enrolled in the music guild.
+	2: GetSortedArtistes: Sorts the artistes in the database according to their year in school. This information is 
+	useful when you want to find out which artistes are in which year. 
+	3: GetArtisteSong: Returns an artiste's song information when the artiste's ID is inputed. This information is useful because 
+	enables us find the song(s) an artiste has produced.
