@@ -2,6 +2,9 @@ package models;
 
 import javax.persistence.*;
 
+/**
+ * Created by efb4
+ */
 
 
 @Entity

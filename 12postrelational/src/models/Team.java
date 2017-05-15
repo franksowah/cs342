@@ -5,6 +5,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+/**
+ * Created by efb4
+ */
+
+
 @Entity
 public class Team {
     private String name;

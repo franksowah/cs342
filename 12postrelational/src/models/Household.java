@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * Created by kec32 on 4/28/2017.
+ * Created by efb4
  */
 
 @Entity

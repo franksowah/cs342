@@ -4,6 +4,9 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import java.io.Serializable;
 
+/**
+ * Created by efb4
+ */
 
 
 public class PersonteamPK implements Serializable {
