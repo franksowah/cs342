@@ -1,9 +1,6 @@
 -- Drop the previous table declarations.
-@&efb4\drop         
-commit;
+@drop         
 -- Reload the table declarations.
-@&efb4\schema
-commit;
+@schema
 -- Load the table data.
-@&efb4\data
-commit;
+@data

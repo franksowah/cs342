@@ -1,0 +1,24 @@
+;;; 
+Export: Release 11.2.0.2.0 - Production on Thu May 18 11:43:00 2017
+
+Copyright (c) 1982, 2009, Oracle and/or its affiliates.  All rights reserved.
+;;; 
+Connected to: Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+Starting "GUILDDB"."SYS_EXPORT_TABLE_01":  guildDB/******** parfile=guildDB.par 
+Estimate in progress using BLOCKS method...
+Processing object type TABLE_EXPORT/TABLE/TABLE_DATA
+Total estimation using BLOCKS method: 384 KB
+Processing object type TABLE_EXPORT/TABLE/TABLE
+Processing object type TABLE_EXPORT/TABLE/CONSTRAINT/CONSTRAINT
+Processing object type TABLE_EXPORT/TABLE/CONSTRAINT/REF_CONSTRAINT
+. . exported "GUILDDB"."ARTISTE"                         9.617 KB      24 rows
+. . exported "GUILDDB"."ARTISTEBAND"                     5.617 KB      18 rows
+. . exported "GUILDDB"."BAND"                            7.382 KB      24 rows
+. . exported "GUILDDB"."MENTOR"                          5.914 KB      24 rows
+. . exported "GUILDDB"."PERFORMANCES"                    7.523 KB      24 rows
+. . exported "GUILDDB"."SONG"                            10.35 KB       5 rows
+Master table "GUILDDB"."SYS_EXPORT_TABLE_01" successfully loaded/unloaded
+******************************************************************************
+Dump file set for GUILDDB.SYS_EXPORT_TABLE_01 is:
+  C:\USERS\EFB4\DOCUMENTS\PROJECT\GUILDDB.DMP
+Job "GUILDDB"."SYS_EXPORT_TABLE_01" successfully completed at 11:43:03

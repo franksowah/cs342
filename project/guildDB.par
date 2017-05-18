@@ -1,0 +1,4 @@
+DIRECTORY=exp_dir
+DUMPFILE=guildDB.dmp
+LOGFILE=guildDB.log
+TABLES=guildDB.Mentor,guildDB.Performances,guildDB.Artiste,guildDB.Band,guildDB.ArtisteBand,guildDB.Song
